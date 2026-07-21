@@ -54,13 +54,13 @@ const education = [
     meta: "졸업",
   },
   {
-    period: "— 2023.02",
+    period: "2018.03 — 2023.08",
     stage: "학사",
     detail: "전북대학교 컴퓨터공학부",
     meta: "GPA 4.07 / 4.5 · 4학년 1학기 이수 후 조기졸업",
   },
   {
-    period: "2023.03 — 2026.02",
+    period: "2023.09 — 2026.02",
     stage: "석사",
     detail: "전북대학교 대학원 전자·정보공학부 컴퓨터공학",
     meta: "졸업 · GPA 4.45 / 4.5",
@@ -68,6 +68,11 @@ const education = [
 ];
 
 const milestones = [
+  {
+    period: "2018.03",
+    title: "대학교 입학",
+    text: "컴퓨터공학 학사과정 시작",
+  },
   {
     period: "2019.01.07 — 2020.08.14",
     title: "군 복무",
@@ -79,12 +84,17 @@ const milestones = [
     text: "학업 복귀와 함께 AI·자연어처리 연구를 시작",
   },
   {
-    period: "2021.03 — 2023.02",
+    period: "2021.03 — 2023.08",
     title: "학부연구생",
     text: "AI와 자연어처리를 중심으로 연구 기초, 모델 학습, 실험 설계를 경험",
   },
   {
-    period: "2023.03 — 2026.02",
+    period: "2023.08",
+    title: "학사 조기졸업",
+    text: "4학년 1학기까지 이수한 뒤 컴퓨터공학 학사과정 졸업",
+  },
+  {
+    period: "2023.09 — 2026.02",
     title: "석사과정 연구",
     text: "언어 모델 적응, 환각 완화, 검색 지식 활용과 파라미터 효율적 학습 연구",
   },
@@ -107,14 +117,14 @@ const capabilityGroups = [
 
 const journey = [
   {
-    period: "2021.03 — 2023.02",
+    period: "2021.03 — 2023.08",
     category: "학부 연구",
     kind: "academic",
     title: "AI·자연어처리 학부연구생",
     text: "AI와 자연어처리를 중심으로 논문 탐색, 언어 모델 학습, 실험 설계와 결과 분석의 기초를 쌓았습니다.",
   },
   {
-    period: "2023.03 — 2026.02",
+    period: "2023.09 — 2026.02",
     category: "대학원 연구",
     kind: "academic",
     title: "자연어처리와 언어 모델",
@@ -149,18 +159,18 @@ const journey = [
     text: "다중 모델과 에이전트 병합, reasoning 강화, human alignment를 연결하는 연구에 참여했습니다.",
   },
   {
-    period: "2025.03 — 현재",
-    category: "진행 연구",
-    kind: "ongoing",
-    title: "검색 지식의 파라미터화",
-    text: "검색 문서를 compact second-order signature로 표현하고 질의 관련도에 따라 결합한 뒤, 저랭크 weight update로 주입하는 방향을 연구하고 있습니다. 검색 깊이와 프롬프트 길이를 분리하는 효율적인 지식 활용이 중심입니다.",
-  },
-  {
     period: "2025.07 — 2025.10",
     category: "응용 프로젝트",
     kind: "applied",
     title: "ONNX 기반 모바일 LLM 추론",
     text: "ONNX를 활용해 언어 모델을 모바일 기기 환경에서 실행할 수 있는 추론 경로를 구성하고, 제한된 연산·메모리 환경에서의 배포 가능성을 검토했습니다.",
+  },
+  {
+    period: "2025.11 — 현재",
+    category: "진행 연구",
+    kind: "ongoing",
+    title: "검색 지식의 파라미터화",
+    text: "검색 문서를 compact second-order signature로 표현하고 질의 관련도에 따라 결합한 뒤, 저랭크 weight update로 주입하는 방향을 연구하고 있습니다. 검색 깊이와 프롬프트 길이를 분리하는 효율적인 지식 활용이 중심입니다.",
   },
 ];
 
@@ -190,7 +200,7 @@ const projects: Project[] = [
     details: ["ONNX", "Model export", "Mobile inference", "Deployment constraints"],
   },
   {
-    period: "2025.03 — 현재",
+    period: "2025.11 — 현재",
     category: "진행 연구",
     kind: "ongoing",
     title: "검색 지식의 파라미터 공간 주입",
