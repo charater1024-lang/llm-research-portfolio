@@ -10,13 +10,13 @@ const siteUrl = isGitHubPages
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "LLM Research Portfolio",
+  title: "LLM & NLP Research Portfolio",
   description:
-    "검색, 디코딩, 파라미터 업데이트를 연결해 더 정확하고 효율적인 언어 모델을 연구하는 장규식의 포트폴리오.",
+    "한국어 LLM 적응, 환각 완화, RAG, ONNX 모바일 추론과 파라미터 기반 지식 주입 경험을 정리한 연구 포트폴리오.",
   openGraph: {
-    title: "LLM Research Portfolio",
+    title: "LLM & NLP Research Portfolio",
     description:
-      "검색, 디코딩, 파라미터 업데이트를 연결해 더 정확하고 효율적인 언어 모델을 연구하는 장규식의 포트폴리오.",
+      "한국어 LLM 적응, 환각 완화, RAG, 모바일 추론과 파라미터 기반 지식 주입을 연결한 연구 포트폴리오.",
     type: "website",
     locale: "ko_KR",
     images: [
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LLM Research Portfolio",
-    description: "검색과 파라미터 기반 지식 주입을 연구하는 LLM 연구 포트폴리오.",
+    title: "LLM & NLP Research Portfolio",
+    description: "LLM 연구와 구현 경험을 시간의 흐름에 따라 정리한 포트폴리오.",
     images: [`${siteUrl}/og.png`],
   },
 };
