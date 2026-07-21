@@ -25,59 +25,80 @@ const researchThemes = [
   {
     number: "03",
     title: "Parametric Knowledge",
-    text: "검색 문서를 질의별 저랭크 파라미터 업데이트로 변환해 프롬프트와 KV-cache 부담을 줄이면서, 근거 추적성과 추론 비용을 함께 검토하고 있습니다.",
-    tags: ["Knowledge Injection", "Low-rank Update", "Efficiency"],
+    text: "검색 문서를 compact signature로 표현하고 질의 관련도에 따라 결합한 뒤, 하나의 저랭크 weight update로 주입하는 방향을 연구하고 있습니다.",
+    tags: ["In-weights RAG", "Query-conditioned Fusion", "Efficiency"],
   },
 ];
 
 const education = [
   {
+    period: "STEP 01",
     stage: "중학교",
     detail: "중등 교육과정 이수",
-    meta: "Secondary education",
+    meta: "Middle school",
   },
   {
+    period: "STEP 02",
     stage: "고등학교",
     detail: "고등 교육과정 이수",
-    meta: "Secondary education",
+    meta: "High school",
   },
   {
+    period: "STEP 03",
     stage: "학사",
     detail: "전북대학교 컴퓨터공학부",
     meta: "GPA 4.07 / 4.5",
   },
   {
+    period: "2023.03 — 2026.02",
     stage: "석사",
     detail: "전북대학교 대학원 전자·정보공학부 컴퓨터공학",
-    meta: "2026.02 졸업 · GPA 4.45 / 4.5",
+    meta: "졸업 · GPA 4.45 / 4.5",
   },
 ];
 
 const journey = [
   {
     period: "2023.03 — 2026.02",
-    title: "석사과정 연구 · BK21 JIANT-IT",
+    category: "대학원 연구",
+    kind: "academic",
+    title: "자연어처리와 언어 모델",
     text: "자연어처리와 언어 모델의 사실성, 외부 지식 활용을 중심으로 학위 연구와 학술 발표를 수행했습니다.",
   },
   {
     period: "2023.10 — 2024.09",
-    title: "언어 모델 산학 연구",
+    category: "산학 공동연구",
+    kind: "industry",
+    title: "언어 모델 생성 품질",
     text: "생성 품질과 신뢰성을 다루는 민간 공동연구에 참여했습니다.",
   },
   {
     period: "2024.01 — 2024.12",
+    category: "국가 R&D",
+    kind: "national",
     title: "개념 이해·추론형 AI 연구",
     text: "개념 이해와 추론 과정을 평가하고 개선하는 복합 AI 원천기술 연구에 참여했습니다.",
   },
   {
     period: "2024.02 — 2024.12",
+    category: "국가 R&D",
+    kind: "national",
     title: "한국어 LLM 사전학습",
     text: "데이터 구성, 다중 GPU 학습, instruction tuning, 추론 검증으로 이어지는 학습 파이프라인을 경험했습니다.",
   },
   {
     period: "2024.12 — 2025.02",
-    title: "모델 병합·추론·정렬 공동연구",
+    category: "산학 공동연구",
+    kind: "industry",
+    title: "모델 병합·추론·정렬",
     text: "다중 모델과 에이전트 병합, reasoning 강화, human alignment를 연결하는 연구에 참여했습니다.",
+  },
+  {
+    period: "2025.03 — 현재",
+    category: "진행 연구",
+    kind: "ongoing",
+    title: "검색 지식의 파라미터화",
+    text: "검색 문서를 second-order signature로 압축하고, 질의 관련도에 따라 여러 passage를 결합한 뒤 저랭크 weight update로 주입하는 in-weights RAG를 연구했습니다. 검색 깊이와 프롬프트 길이를 분리하는 효율적인 지식 활용이 중심입니다.",
   },
 ];
 
@@ -190,7 +211,7 @@ export default function Home() {
               <li>
                 <span>2026</span>
                 <strong>Parametric context</strong>
-                <small>잠재 문맥 · 저랭크 지식 주입</small>
+                <small>In-weights RAG · 질의 기반 문서 결합</small>
               </li>
             </ol>
           </div>
@@ -273,12 +294,15 @@ export default function Home() {
           <div className="journey-grid">
             <div className="journey-column">
               <h3>Education</h3>
-              <ol className="timeline education-timeline">
+              <div className="journey-range" aria-hidden="true">
+                <span>Earlier</span><i /><span>2026.02</span>
+              </div>
+              <ol className="timeline education-timeline" aria-label="중학교부터 석사까지의 교육 과정">
                 {education.map((item) => (
                   <li key={item.stage}>
                     <span className="timeline-dot" aria-hidden="true" />
-                    <small>{item.stage}</small>
-                    <strong>{item.detail}</strong>
+                    <small>{item.period}</small>
+                    <strong>{item.stage} · {item.detail}</strong>
                     <p>{item.meta}</p>
                   </li>
                 ))}
@@ -292,6 +316,7 @@ export default function Home() {
                   <li key={item.period + item.title}>
                     <span className="timeline-dot" aria-hidden="true" />
                     <small>{item.period}</small>
+                    <span className={`journey-kind ${item.kind}`}>{item.category}</span>
                     <strong>{item.title}</strong>
                     <p>{item.text}</p>
                   </li>
@@ -333,10 +358,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="closing-section">
-          <p className="section-index">RESEARCH PRINCIPLE</p>
-          <p>재현 가능한 비교와<br />확인할 수 있는 근거를 남깁니다.</p>
-        </section>
       </main>
 
       <footer>

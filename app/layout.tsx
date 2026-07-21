@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     images: [
       {
-        url: `${siteUrl}/og-portfolio-final.png`,
+        url: `${siteUrl}/og.png`,
         width: 1536,
         height: 1024,
         alt: "LLM research journey",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "LLM Research Portfolio",
     description: "검색과 파라미터 기반 지식 주입을 연구하는 LLM 연구 포트폴리오.",
-    images: [`${siteUrl}/og-portfolio-final.png`],
+    images: [`${siteUrl}/og.png`],
   },
 };
 
