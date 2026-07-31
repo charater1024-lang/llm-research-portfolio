@@ -17,6 +17,10 @@ type Project = {
   summary: string;
   details: string[];
   status?: string;
+  links?: {
+    label: string;
+    href: string;
+  }[];
 };
 
 const researchThemes = [
@@ -208,6 +212,25 @@ const projects: Project[] = [
     details: ["In-weights RAG", "Second-order signature", "Query-conditioned fusion", "Low-rank update"],
     status: "투고 중",
   },
+  {
+    period: "현재",
+    category: "개인 프로젝트",
+    kind: "applied",
+    title: "BoraBridge",
+    summary: "자산 현황과 공식 금융·정책 정보를 바탕으로 사용자가 오늘 실행할 금융 행동을 정리할 수 있도록 돕는 웹 서비스를 개발하고 있습니다.",
+    details: ["AI financial copilot", "Personal finance", "Public data", "Accessibility"],
+    status: "(개발 중)",
+    links: [
+      {
+        label: "사이트 보기",
+        href: "https://borabridge.com",
+      },
+      {
+        label: "GitHub 프로필",
+        href: "https://github.com/charater1024-lang",
+      },
+    ],
+  },
 ];
 
 const publications: Publication[] = [
@@ -300,6 +323,9 @@ export default function Home() {
             <div className="hero-links">
               <a className="primary-link" href="#cv">CV 요약 보기 <Arrow /></a>
               <a className="secondary-link" href="#projects">프로젝트 경험</a>
+              <a className="secondary-link" href="https://github.com/charater1024-lang" target="_blank" rel="noreferrer">
+                GitHub <Arrow />
+              </a>
             </div>
           </div>
 
@@ -494,7 +520,7 @@ export default function Home() {
             <p className="section-index">05 / PROJECTS</p>
             <div>
               <h2>프로젝트 경험</h2>
-              <p>논문 연구와 대학원 과제에서 수행한 모델 적응, 신뢰성, 경량 배포, 검색 지식 주입 경험을 선별했습니다.</p>
+              <p>언어 모델 연구와 과제 경험부터 경량 배포, 검색 지식 주입, 개발 중인 AI 금융 서비스까지 주요 작업을 정리했습니다.</p>
             </div>
           </div>
 
@@ -512,6 +538,15 @@ export default function Home() {
                   <ul aria-label={`${project.title} 핵심 기술`}>
                     {project.details.map((detail) => <li key={detail}>{detail}</li>)}
                   </ul>
+                  {project.links && (
+                    <div className="project-links">
+                      {project.links.map((link) => (
+                        <a href={link.href} target="_blank" rel="noreferrer" key={link.href}>
+                          {link.label} <Arrow />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
@@ -554,7 +589,11 @@ export default function Home() {
 
       <footer>
         <span>장규식 · LLM Research Portfolio</span>
-        <a href="#top">위로 ↑</a>
+        <div>
+          <a href="https://borabridge.com" target="_blank" rel="noreferrer">BoraBridge (개발 중)</a>
+          <a href="https://github.com/charater1024-lang" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="#top">위로 ↑</a>
+        </div>
       </footer>
     </>
   );
