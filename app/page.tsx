@@ -17,6 +17,7 @@ type Project = {
   summary: string;
   details: string[];
   status?: string;
+  repositoryNote?: string;
   links?: {
     label: string;
     href: string;
@@ -220,14 +221,11 @@ const projects: Project[] = [
     summary: "자산 현황과 공식 금융·정책 정보를 바탕으로 사용자가 오늘 실행할 금융 행동을 정리할 수 있도록 돕는 웹 서비스를 개발하고 있습니다.",
     details: ["AI financial copilot", "Personal finance", "Public data", "Accessibility"],
     status: "(개발 중)",
+    repositoryNote: "저장소 · GitHub 비공개",
     links: [
       {
         label: "사이트 보기",
         href: "https://borabridge.com",
-      },
-      {
-        label: "GitHub 프로필",
-        href: "https://github.com/charater1024-lang",
       },
     ],
   },
@@ -538,6 +536,9 @@ export default function Home() {
                   <ul aria-label={`${project.title} 핵심 기술`}>
                     {project.details.map((detail) => <li key={detail}>{detail}</li>)}
                   </ul>
+                  {project.repositoryNote && (
+                    <span className="project-repository-note">{project.repositoryNote}</span>
+                  )}
                   {project.links && (
                     <div className="project-links">
                       {project.links.map((link) => (
