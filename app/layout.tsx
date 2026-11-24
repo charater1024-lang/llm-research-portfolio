@@ -12,11 +12,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "LLM & NLP Research Portfolio",
   description:
-    "한국어 LLM 적응, 환각 완화, RAG, ONNX 모바일 추론과 파라미터 기반 지식 주입 경험을 정리한 연구 포트폴리오.",
+    "장규식의 LLM·NLP 연구와 개인 개발 포트폴리오. Findings of EMNLP 2026 공동 제1저자 논문 Doc2Weight와 금융·여행 서비스의 GitHub 소스 및 검증 자료를 소개합니다.",
   openGraph: {
     title: "LLM & NLP Research Portfolio",
     description:
-      "한국어 LLM 적응, 환각 완화, RAG, 모바일 추론과 파라미터 기반 지식 주입을 연결한 연구 포트폴리오.",
+      "장규식의 Doc2Weight 논문과 한국어 LLM 연구, 공개 소스로 살펴보는 금융·여행 서비스 개발 경험.",
     type: "website",
     locale: "ko_KR",
     images: [

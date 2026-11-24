@@ -386,6 +386,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .journey-kind.ongoing { border-color: #a9c8bc; background: var(--accent-soft); color: var(--accent-dark); }
 
 .projects-section { max-width: none; padding-left: max(28px, calc((100vw - 1104px) / 2)); padding-right: max(28px, calc((100vw - 1104px) / 2)); background: var(--surface); }
+.project-group + .project-group { margin-top: 58px; }
+.project-group > h3 { margin: 0 0 12px; font-size: 21px; letter-spacing: -.025em; }
+.project-group > p { max-width: 760px; margin: 0 0 22px; color: var(--muted); font-size: 14px; word-break: keep-all; }
 .project-list { border-top: 1px solid var(--ink); }
 .project-row {
   display: grid;
@@ -406,7 +409,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   font-weight: 650;
   line-height: 1.5;
 }
-.project-copy h3 { margin: 0 0 7px; font-size: 17px; font-weight: 650; letter-spacing: -.015em; }
+.project-copy h4 { margin: 0 0 7px; font-size: 17px; font-weight: 650; letter-spacing: -.015em; }
 .project-copy > p { max-width: 760px; margin: 0; color: var(--muted); font-size: 12px; word-break: keep-all; }
 .project-copy ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
 .project-copy li {
@@ -417,14 +420,9 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   font-size: 8px;
   line-height: 1.4;
 }
-.project-repository-note {
-  display: block;
-  margin-top: 14px;
-  color: var(--muted);
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 9px;
-  line-height: 1.5;
-}
+.private-work { margin-top: 22px; padding: 13px 18px; border-left: 2px solid var(--line-strong); background: var(--paper); }
+.private-work h4 { margin: 0 0 5px; font-size: 13px; }
+.private-work ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 12px; }
 .project-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 17px; }
 .project-links a {
   display: inline-flex;

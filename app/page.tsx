@@ -12,12 +12,11 @@ type Publication = {
 type Project = {
   period: string;
   category: string;
-  kind: "academic" | "industry" | "national" | "applied" | "ongoing";
+  kind: "academic" | "applied";
   title: string;
   summary: string;
   details: string[];
   status?: string;
-  repositoryNote?: string;
   links?: {
     label: string;
     href: string;
@@ -40,7 +39,7 @@ const researchThemes = [
   {
     number: "03",
     title: "Parametric Knowledge",
-    text: "검색 문서를 compact signature로 표현하고 질의 관련도에 따라 결합한 뒤, 하나의 저랭크 weight update로 주입하는 방향을 연구하고 있습니다.",
+    text: "검색 문서별 특징을 미리 계산한 뒤, 질문과의 관련도에 따라 하나의 저랭크 가중치 업데이트로 결합하는 Doc2Weight를 연구했습니다.",
     tags: ["In-weights RAG", "Query-conditioned Fusion", "Efficiency"],
   },
 ];
@@ -171,15 +170,15 @@ const journey = [
     text: "ONNX를 활용해 언어 모델을 모바일 기기 환경에서 실행할 수 있는 추론 경로를 구성하고, 제한된 연산·메모리 환경에서의 배포 가능성을 검토했습니다.",
   },
   {
-    period: "2025.11 — 현재",
-    category: "진행 연구",
-    kind: "ongoing",
-    title: "검색 지식의 파라미터화",
-    text: "검색 문서를 compact second-order signature로 표현하고 질의 관련도에 따라 결합한 뒤, 저랭크 weight update로 주입하는 방향을 연구하고 있습니다. 검색 깊이와 프롬프트 길이를 분리하는 효율적인 지식 활용이 중심입니다.",
+    period: "2025.11 — 2026.10",
+    category: "국제학회 논문",
+    kind: "academic",
+    title: "Doc2Weight · Findings of EMNLP 2026",
+    text: "검색 지식을 언어 모델의 파라미터에 반영해 질문만으로 답을 생성하는 방법을 연구하고, 공동 제1저자로 논문을 발표했습니다.",
   },
 ];
 
-const projects: Project[] = [
+const researchProjects: Project[] = [
   {
     period: "2023",
     category: "연구 프로젝트",
@@ -205,33 +204,97 @@ const projects: Project[] = [
     details: ["ONNX", "Model export", "Mobile inference", "Deployment constraints"],
   },
   {
-    period: "2025.11 — 현재",
-    category: "진행 연구",
-    kind: "ongoing",
-    title: "검색 지식의 파라미터 공간 주입",
-    summary: "검색 passage를 compact signature로 표현하고 질의 관련도에 따라 weight space에서 결합해, 긴 검색 문맥을 프롬프트에 직접 추가하지 않는 지식 활용 방식을 연구하고 있습니다.",
-    details: ["In-weights RAG", "Second-order signature", "Query-conditioned fusion", "Low-rank update"],
-    status: "투고 중",
-  },
-  {
-    period: "현재",
-    category: "개인 프로젝트",
-    kind: "applied",
-    title: "BoraBridge",
-    summary: "자산 현황과 공식 금융·정책 정보를 바탕으로 사용자가 오늘 실행할 금융 행동을 정리할 수 있도록 돕는 웹 서비스를 개발하고 있습니다.",
-    details: ["AI financial copilot", "Personal finance", "Public data", "Accessibility"],
-    status: "(개발 중)",
-    repositoryNote: "저장소 · GitHub 비공개",
+    period: "2025.11 — 2026.10",
+    category: "국제학회 논문",
+    kind: "academic",
+    title: "Doc2Weight · 검색 문서를 모델 가중치에 반영하는 RAG",
+    summary: "동결된 언어 모델에 검색 문서의 정보를 저랭크 업데이트로 주입했습니다. 질문만 입력할 때도 여러 문서가 답변에 기여하도록 각 문서의 가중치를 질문에 맞춰 조절했습니다.",
+    details: ["In-weights RAG", "질의별 문서 가중치", "저랭크 업데이트"],
     links: [
-      {
-        label: "사이트 보기",
-        href: "https://borabridge.com",
-      },
+      { label: "ACL Anthology 논문", href: "https://aclanthology.org/2026.findings-emnlp.744/" },
+      { label: "공식 연구 코드", href: "https://github.com/charater1024-lang/doc2weight" },
     ],
   },
 ];
 
+const personalProjects: Project[] = [
+  {
+    period: "2026",
+    category: "금융 정보 서비스",
+    kind: "applied",
+    title: "BORA Bridge",
+    summary: "직접 입력한 자산과 월 현금흐름을 살펴보고, 질문과 관련된 공식 금융·정책 자료를 찾아볼 수 있게 만들었습니다. 서비스의 화면과 사용자 흐름을 공개 저장소에 정리했습니다.",
+    details: ["자산·현금흐름", "공공데이터", "근거 검색"],
+    status: "데모 서버 중지",
+    links: [
+      { label: "GitHub 소스", href: "https://github.com/charater1024-lang/bora-brdige-project" },
+      { label: "서비스 소개서 PDF", href: "https://github.com/charater1024-lang/bora-brdige-project/blob/main/docs/showcase/BORA-Bridge-Service-Showcase-2026-09.pdf" },
+      { label: "서비스 화면 11장", href: "https://github.com/charater1024-lang/bora-brdige-project/tree/main/docs/images/bora-bridge" },
+    ],
+  },
+  {
+    period: "2026",
+    category: "금융 준법",
+    kind: "applied",
+    title: "금융 준법자문 AI 에이전트",
+    summary: "금융 문구를 검토할 때 어떤 공식 자료를 근거로 삼았는지 확인할 수 있도록 BM25 검색과 원문 링크를 연결했습니다. 근거가 부족한 답변은 담당자의 심의로 이어지도록 구성했습니다.",
+    details: ["FastAPI", "React", "BM25", "Ollama"],
+    links: [{ label: "GitHub 소스·화면", href: "https://github.com/charater1024-lang/finbank-compliance-agent" }],
+  },
+  {
+    period: "2026",
+    category: "여행 추천",
+    kind: "applied",
+    title: "탐라따라 · 제주 맞춤 여행 코스",
+    summary: "제주 공공데이터에서 관광지를 찾고, 출발지·이동 거리·복귀 시간에 맞춰 하루 일정을 추천합니다. 오프라인 도로 자료와 실행에 필요한 모델을 배포본에 함께 담았습니다.",
+    details: ["공공데이터", "E5 의미 검색", "오프라인 경로 탐색"],
+    links: [
+      { label: "GitHub 소스·기획서", href: "https://github.com/charater1024-lang/jeju-gilbeot" },
+      { label: "최종 배포본", href: "https://github.com/charater1024-lang/jeju-gilbeot/releases/tag/v2026.11.09-tamra-ttara" },
+    ],
+  },
+  {
+    period: "2026",
+    category: "메신저",
+    kind: "applied",
+    title: "Everyday Chat · Secure Collab",
+    summary: "직접 호스팅하는 메신저를 목표로 개인·단체 대화용 앱과 팀 채널용 앱을 Flutter로 구성했습니다. 공개 버전에서는 대화와 첨부 화면을 한 기기에서 미리 볼 수 있습니다.",
+    details: ["Flutter", "Dart", "로컬 UI 미리보기"],
+    links: [{ label: "GitHub 소스·실행 안내", href: "https://github.com/charater1024-lang/private-chat-platform" }],
+  },
+  {
+    period: "2026",
+    category: "컴퓨터 비전",
+    kind: "applied",
+    title: "카메라 도로 영역 분할과 오프라인 RC 실험",
+    summary: "추가 학습 전후의 도로 누락과 오인식을 같은 평가셋에서 비교했습니다. 두 후보 모두 한쪽 오류를 줄이면 다른 쪽이 늘어 채택하지 않았습니다. 제어 흐름은 오프라인 시뮬레이션으로 점검했습니다.",
+    details: ["도로 분할", "오류 분석", "Dry-run"],
+    links: [
+      { label: "GitHub 소스", href: "https://github.com/charater1024-lang/camera-rc-training" },
+      { label: "실험 결과", href: "https://github.com/charater1024-lang/camera-rc-training/blob/codex/public-release/docs/RESULTS.md" },
+    ],
+  },
+  {
+    period: "2026",
+    category: "학습 도구",
+    kind: "applied",
+    title: "AI 논문·모델 구현 독학 랩",
+    summary: "논문의 핵심 연산을 작은 예제로 구현하고 결과를 확인할 수 있도록 한국어 해설과 실습을 만들었습니다. 기초와 논문 트랙에 연습·해답 노트북 113쌍을 구성했습니다.",
+    details: ["PyTorch", "Jupyter", "교육용 축소 재현"],
+    links: [{ label: "GitHub 노트북·학습 안내", href: "https://github.com/charater1024-lang/ai-paper-reproduction-study" }],
+  },
+];
+
 const publications: Publication[] = [
+  {
+    date: "2026.10",
+    venue: "Findings of EMNLP 2026",
+    title: "Doc2Weight: In-Weights Retrieval-Augmented Generation via Parameter Injection",
+    contribution: "LLaMA-3-8B의 질의응답 벤치마크 4종에서 평균 F1은 표준 RAG 27.59, 질문만 입력한 Doc2Weight 39.50이었습니다. 별도 효율 실험에서 두 방법의 평균 생성 프롬프트 길이는 각각 1,353토큰과 44토큰이었습니다.",
+    role: "공동 제1저자",
+    href: "https://aclanthology.org/2026.findings-emnlp.744/",
+    linkLabel: "ACL Anthology",
+  },
   {
     date: "2024.12",
     venue: "KSC 2024",
@@ -291,6 +354,39 @@ const publications: Publication[] = [
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
+}
+
+function ProjectList({ projects }: { projects: Project[] }) {
+  return (
+    <div className="project-list">
+      {projects.map((project) => (
+        <article className="project-row" key={project.title}>
+          <div className="project-meta">
+            <strong>{project.period}</strong>
+            <span className={`journey-kind ${project.kind}`}>{project.category}</span>
+            {project.status && <span className="project-status">{project.status}</span>}
+          </div>
+          <div className="project-copy">
+            <h4>{project.title}</h4>
+            <p>{project.summary}</p>
+            <ul aria-label={`${project.title} 핵심 기술`}>
+              {project.details.map((detail) => <li key={detail}>{detail}</li>)}
+            </ul>
+
+            {project.links && (
+              <div className="project-links">
+                {project.links.map((link) => (
+                  <a href={link.href} target="_blank" rel="noreferrer" key={link.href}>
+                    {link.label} <Arrow />
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
 }
 
 export default function Home() {
@@ -376,8 +472,8 @@ export default function Home() {
             <dl className="cv-facts">
               <div><dt>Research since</dt><dd>2021.03</dd></div>
               <div><dt>Degree</dt><dd>M.S. · 2026.02</dd></div>
-              <div><dt>Research outputs</dt><dd>6 papers</dd></div>
-              <div><dt>Recognition</dt><dd>1 best presentation award</dd></div>
+              <div><dt>Research outputs</dt><dd>{publications.length}편 · 국내 6편 / 국제 1편</dd></div>
+              <div><dt>Recognition</dt><dd>우수발표논문상 1회</dd></div>
             </dl>
           </div>
 
@@ -518,39 +614,27 @@ export default function Home() {
             <p className="section-index">05 / PROJECTS</p>
             <div>
               <h2>프로젝트 경험</h2>
-              <p>언어 모델 연구와 과제 경험부터 경량 배포, 검색 지식 주입, 개발 중인 AI 금융 서비스까지 주요 작업을 정리했습니다.</p>
+              <p>개인 서비스의 소스·화면·실행 자료와 언어 모델 연구에서 맡은 작업을 확인할 수 있습니다.</p>
             </div>
           </div>
 
-          <div className="project-list">
-            {projects.map((project) => (
-              <article className="project-row" key={project.title}>
-                <div className="project-meta">
-                  <strong>{project.period}</strong>
-                  <span className={`journey-kind ${project.kind}`}>{project.category}</span>
-                  {project.status && <span className="project-status">{project.status}</span>}
-                </div>
-                <div className="project-copy">
-                  <h3>{project.title}</h3>
-                  <p>{project.summary}</p>
-                  <ul aria-label={`${project.title} 핵심 기술`}>
-                    {project.details.map((detail) => <li key={detail}>{detail}</li>)}
-                  </ul>
-                  {project.repositoryNote && (
-                    <span className="project-repository-note">{project.repositoryNote}</span>
-                  )}
-                  {project.links && (
-                    <div className="project-links">
-                      {project.links.map((link) => (
-                        <a href={link.href} target="_blank" rel="noreferrer" key={link.href}>
-                          {link.label} <Arrow />
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </article>
-            ))}
+          <div className="project-group">
+            <h3>개인 개발 프로젝트</h3>
+            <p>개인 프로젝트마다 아이디어를 직접 내고 해결할 문제와 기능 범위를 정했습니다. 구현·테스트·디버깅에 Codex의 도움을 받았고, 설계 결정과 최종 결과 검증은 제가 맡았습니다.</p>
+            <ProjectList projects={personalProjects} />
+            <aside className="private-work">
+              <h4>비공개 개인 프로젝트</h4>
+              <ul>
+                <li>DACON 공공조달 준법 점검 · 24개 점검 항목</li>
+                <li>Last Outpost · 기지 배치를 편집할 수 있는 개인 전략 게임 프로토타입</li>
+                <li>Local Image Studio</li>
+              </ul>
+            </aside>
+          </div>
+
+          <div className="project-group">
+            <h3>연구·응용 프로젝트</h3>
+            <ProjectList projects={researchProjects} />
           </div>
         </section>
 
@@ -559,7 +643,7 @@ export default function Home() {
             <p className="section-index">06 / PUBLICATIONS</p>
             <div>
               <h2>논문 및 학회 발표</h2>
-              <p>언어 적응에서 시작해 문맥 활용, 환각 완화, 생성 사실성으로 확장해 온 연구 기록입니다.</p>
+              <p>국내 학술대회 6편과 국제학회 논문 1편을 발표했습니다. 7편 가운데 6편에 제1저자(공동 제1저자 포함)로 참여했습니다.</p>
             </div>
           </div>
 
@@ -591,7 +675,7 @@ export default function Home() {
       <footer>
         <span>장규식 · LLM Research Portfolio</span>
         <div>
-          <a href="https://borabridge.com" target="_blank" rel="noreferrer">BoraBridge (개발 중)</a>
+          <a href="https://github.com/charater1024-lang/bora-brdige-project" target="_blank" rel="noreferrer">BORA Bridge 공개 자료</a>
           <a href="https://github.com/charater1024-lang" target="_blank" rel="noreferrer">GitHub</a>
           <a href="#top">위로 ↑</a>
         </div>
