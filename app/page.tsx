@@ -626,7 +626,6 @@ export default function Home() {
               <h4>비공개 개인 프로젝트</h4>
               <ul>
                 <li>DACON 공공조달 준법 점검 · 24개 점검 항목</li>
-                <li>Last Outpost · 기지 배치를 편집할 수 있는 개인 전략 게임 프로토타입</li>
                 <li>Local Image Studio</li>
               </ul>
             </aside>
